@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-10">
+        <h2>People List</h2>
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-success" (click)="openDialog()">Agegar</button>
+    </div>
+</div>
+
+<br>
+
+<mat-form-field appearance="standard">
+    <mat-label>Filtro</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Example: César" #input>
+</mat-form-field>
+  
+<table #table mat-table [dataSource]="people" class="mat-elevation-z8">
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Nombre(s) </th>
+    <td mat-cell *matCellDef="let person"> {{person.name}} </td>
+  </ng-container>
+
+  <!-- Last_name Column -->
+  <ng-container matColumnDef="last_name">
+    <th mat-header-cell *matHeaderCellDef> Apellido Paterno </th>
+    <td mat-cell *matCellDef="let person"> {{person.last_name}} </td>
+  </ng-container>
+
+  <!-- M_last_name Column -->
+  <ng-container matColumnDef="m_last_name">
+    <th mat-header-cell *matHeaderCellDef> Apellido Materno </th>
+    <td mat-cell *matCellDef="let person"> {{person.m_last_name}} </td>
+  </ng-container>
+
+  <!-- Adress Column -->
+  <ng-container matColumnDef="adress">
+    <th mat-header-cell *matHeaderCellDef> Dirección </th>
+    <td mat-cell *matCellDef="let person"> {{person.adress}} </td>
+  </ng-container>
+
+  <!-- Phone Column -->
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+    <td mat-cell *matCellDef="let person"> {{person.phone}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
